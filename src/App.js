@@ -8,6 +8,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import MoviesDetails from './components/MoviesDetails'
 import { useDispatch, useSelector } from "react-redux"
 import { getAllMovies } from './reduxToolkit/MoviesSlice'
+import Loader2 from "./components/loader/Loader2"
 
 function App() {
 
@@ -31,7 +32,7 @@ function App() {
             <Navbar />
             <Container >
                 <BrowserRouter>
-                    {isLoading ? "Loading..." : (
+                    {isLoading ? <Loader2 width="200px" height="200px"/> : (
                         <Routes>
                             <Route path='/' element={<MoviesList getPageMovie={getPageMovie} pageCount={pageCount} />} />
                             <Route path='/movie/:id' element={<MoviesDetails />} />
